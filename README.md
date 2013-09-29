@@ -6,13 +6,26 @@ A library for converting Markdown, etc to HTML
 USAGE
 -----
 
+Browser script 
+
     <script src="plaintext.js"></script>
     <script>
-        var text = "**hello *world***!";
-        var html = plaintext.multimarkdown(text);
-        document.write(html);
+        plaintext.multimarkdown("**hello *world*!**");
     </script>
+
+Require.js
+    
+    <script>
+    require('plaintext', function(plaintext) {
+        plaintext.multimarkdown("**hello *world*!**");
+    });
+
+Node.js
+
+    var plaintext = require('plaintext.js');
+    plaintext.multimarkdown("**hello *world*!**");
 
 TODO
 ----
 - [ ] Add MultiMarkdown support
+- [ ] Add exports
