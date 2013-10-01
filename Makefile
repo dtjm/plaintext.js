@@ -11,9 +11,11 @@ deps/multimarkdown-4:
 	(cd $(MMDDIR); git submodule init; git submodule update)
 
 $(MMDDIR)/parser.c:
+	(cd $(MMDDIR); git submodule init; git submodule update)
 	make -C $(MMDDIR)
 
 build/libmultimarkdown.js: $(MMDDIR)/parser.c
+	(cd $(MMDDIR); git submodule init; git submodule update)
 	mkdir -p build
 	$(CC) -O2 $(MMDDIR)/*.c -o $@ -s EXPORTED_FUNCTIONS="['_mmd_version', '_markdown_to_string']" -s OUTLINING_LIMIT=10000
 
