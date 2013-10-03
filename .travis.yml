@@ -1,2 +1,2 @@
 script: "make"
-env: LLVM_ROOT=/usr/bin PYTHON=/usr/bin/python2 NODE_JS=/home/travis/.nvm/v0.10.12/bin/node EMSCRIPTEN_ROOT=/home/travis/build/dtjm/plaintext.js/deps/emscripten
+before_script: "cp -v .emscripten ~/"
