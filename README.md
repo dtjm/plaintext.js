@@ -1,4 +1,4 @@
-plaintext.js
+plaintext.js ![Build status](https://api.travis-ci.org/dtjm/plaintext.js.png)
 ============
 
 A library for converting Markdown, etc to HTML

@@ -28,9 +28,8 @@ build/libmultimarkdown.js: $(MMDDIR)/parser.c
 	mkdir -p build
 	$(CC) -O2 $(MMDDIR)/*.c -o $@ -s EXPORTED_FUNCTIONS="['_mmd_version', '_markdown_to_string']" -s OUTLINING_LIMIT=10000
 
-$(CC): deps/clang+llvm-3.2
-	git submodule init
-	git submodule update
+$(CC): deps/llvm
+	git submodule update --init --recursive
 
 dist/plaintext.js: build/libmultimarkdown.js src/*.js
 	mkdir -p dist
