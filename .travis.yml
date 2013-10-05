@@ -1,4 +1,5 @@
 script: "make"
 before_script: 
+- "make clean"
 - "cp -v .emscripten ~/"
 - "git submodule update --init --recursive"

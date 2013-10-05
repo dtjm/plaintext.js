@@ -12,9 +12,9 @@ endif
 all: dist/plaintext.js
 
 deps/llvm:
-	echo "Download clang+llvm-3.2-x86_64-$(HOST_NAME).tar.gz"
-	curl http://llvm.org/releases/3.2/clang+llvm-3.2-x86_64-$(HOST_NAME).tar.gz | tar zxvf -
+	curl http://llvm.org/releases/3.2/clang+llvm-3.2-x86_64-$(HOST_NAME).tar.gz | tar zxf -
 	mv clang+llvm-3.2-x86_64-$(HOST_NAME) deps/llvm
+	ls deps/llvm
 
 deps/multimarkdown-4:
 	git submodule update --init --recursive
@@ -36,5 +36,4 @@ dist/plaintext.js: build/libmultimarkdown.js src/*.js
 	cat src/multimarkdown_header.js build/libmultimarkdown.js src/multimarkdown_footer.js > $@
 
 clean:
-	rm -rf build dist
-	make -C $(MMDDIR) clean
+	rm -rf build dist deps
