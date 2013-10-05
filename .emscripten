@@ -5,7 +5,7 @@ import os
 
 # this helps projects using emscripten find it
 EMSCRIPTEN_ROOT = os.path.expanduser(os.getenv('EMSCRIPTEN') or '/home/travis/.emscripten') # directory
-LLVM_ROOT = os.path.expanduser(os.getenv('LLVM') or '/usr/bin') # directory
+LLVM_ROOT = os.path.expanduser(os.getenv('LLVM') or '/home/travis/dtjm/plaintext.js/deps/llvm') # directory
 PYTHON = os.path.expanduser(os.getenv('PYTHON') or '/usr/bin/python2') # executable
 
 # See below for notes on which JS engine(s) you need
