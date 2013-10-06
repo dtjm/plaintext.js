@@ -4,8 +4,8 @@
 import os
 
 # this helps projects using emscripten find it
-EMSCRIPTEN_ROOT = os.path.expanduser(os.getenv('EMSCRIPTEN') or '~/dtjm/plaintext.js/deps/emscripten') # directory
-LLVM_ROOT = os.path.expanduser(os.getenv('LLVM') or '~/dtjm/plaintext.js/deps/llvm/bin') # directory
+EMSCRIPTEN_ROOT = os.path.expanduser(os.getenv('EMSCRIPTEN') or '~/build/dtjm/plaintext.js/deps/emscripten') # directory
+LLVM_ROOT = os.path.expanduser(os.getenv('LLVM') or '~/build/dtjm/plaintext.js/deps/llvm/bin') # directory
 PYTHON = os.path.expanduser(os.getenv('PYTHON') or '/usr/bin/python2') # executable
 
 # See below for notes on which JS engine(s) you need
