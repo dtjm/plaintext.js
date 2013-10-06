@@ -14,8 +14,7 @@ all: dist/plaintext.js
 deps/llvm:
 	curl http://llvm.org/releases/3.2/clang+llvm-3.2-x86_64-$(HOST_NAME).tar.gz | tar zxf -
 	mv clang+llvm-3.2-x86_64-$(HOST_NAME) deps/llvm
-	ls deps/llvm
-	ls -l /home/travis/dtjm/plaintext.js/deps/llvm/bin/clang++
+	ls -l deps/llvm/bin/clang++
 
 deps/multimarkdown-4:
 	git submodule update --init --recursive
