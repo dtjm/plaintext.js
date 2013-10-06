@@ -15,6 +15,7 @@ deps/llvm:
 	curl http://llvm.org/releases/3.2/clang+llvm-3.2-x86_64-$(HOST_NAME).tar.gz | tar zxf -
 	mv clang+llvm-3.2-x86_64-$(HOST_NAME) deps/llvm
 	ls -l deps/llvm/bin/clang++
+	echo $$PWD
 
 deps/multimarkdown-4:
 	git submodule update --init --recursive
