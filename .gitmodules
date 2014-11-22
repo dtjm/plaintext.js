@@ -1,6 +1,3 @@
 [submodule "deps/multimarkdown-4"]
 	path = deps/multimarkdown-4
 	url = https://github.com/fletcher/MultiMarkdown-4.git
-[submodule "deps/emscripten"]
-	path = deps/emscripten
-	url = https://github.com/kripken/emscripten.git
