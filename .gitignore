@@ -1,3 +1,4 @@
 build
 dist
 deps
+node_modules/
