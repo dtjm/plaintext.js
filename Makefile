@@ -20,7 +20,7 @@ build/libmultimarkdown.js: $(MMDDIR)/parser.o
 dist/index.js: build/libmultimarkdown.js src/*.js
 	mkdir -pv dist
 	cat src/multimarkdown_header.js build/libmultimarkdown.js src/multimarkdown_footer.js | \
-		sed -e 's/\(.*process.platform\)/\/\/ \1/' > $@
+		grep -v process.platform.match > $@
 
 examples/index.js: dist/index.js
 	npm install ws
