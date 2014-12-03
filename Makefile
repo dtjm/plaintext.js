@@ -1,10 +1,8 @@
 BUILDDIR=build
 MMDDIR=deps/multimarkdown-4
-CC=emcc
-CCFLAGS=-O2
 
-all: dist/index.js examples/index.js
-
+all: dist/plaintext.js spec
+	
 deps/multimarkdown-4:
 	git submodule update --init --recursive
 
@@ -12,19 +10,37 @@ $(MMDDIR)/parser.o:
 	git submodule update --init --recursive
 	fig run build make -C $(MMDDIR)
 
+build/plaintext.js: src/*.ts 
+	tsc --outDir ./build --module amd src/plaintext.ts
+
 build/libmultimarkdown.js: $(MMDDIR)/parser.o
 	git submodule update --init --recursive
 	mkdir -pv build
 	fig run build bash -c "emcc -O2 /src/$(MMDDIR)/*.c -o $@ -s EXPORTED_FUNCTIONS=\"['_mmd_version', '_markdown_to_string']\" -s OUTLINING_LIMIT=10000"
 
-dist/index.js: build/libmultimarkdown.js src/*.js
+build/textile.js: node_modules/textile-js
+	mkdir -pv build
+	cp -v node_modules/textile-js/lib/textile.js build/
+
+node_modules/textile-js:
+	npm install
+
+dist/plaintext.js: build/libmultimarkdown.js build/textile.js build/plaintext.js
 	mkdir -pv dist
-	cat src/multimarkdown_header.js build/libmultimarkdown.js src/multimarkdown_footer.js | \
+	cat build/textile.js build/libmultimarkdown.js build/plaintext.js | \
 		grep -v process.platform.match > $@
 
-examples/index.js: dist/index.js
-	npm install ws
-	( cd examples; browserify app.js -o index.js )
+test: dist/plaintext.js spec
+	./node_modules/karma/bin/karma start karma.conf.js --single-run
+
+autotest:  dist/plaintext.js spec
+	./node_modules/karma/bin/karma start karma.conf.js
+
+spec: tests/jasmine/spec/plaintext_spec.js
+
+tests/jasmine/spec/%.js: tests/jasmine/spec_src/%.ts
+	mkdir -pv tests/jasmine/spec
+	tsc --outDir tests/jasmine/spec $<
 
 clean:
 	rm -rf build dist deps

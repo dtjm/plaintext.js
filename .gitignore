@@ -2,3 +2,6 @@ build
 dist
 deps
 node_modules/
+.DS_Store
+lcov.info
+phantomjsdriver.log
