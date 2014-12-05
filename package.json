@@ -20,9 +20,6 @@
   "files": [
     "dist/plaintext.js"
   ],
-  "scripts": {
-    "prepublish": "make clean all"
-  },
   "main": "dist/plaintext.js",
   "devDependencies": {
     "grunt-typescript": "",
