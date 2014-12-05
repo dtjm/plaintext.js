@@ -1,30 +1,44 @@
 {
-    "name": "plaintext",
-    "version": "0.0.1",
-    "url": "https://github.com/dtjm/plaintext.js",
-    "author": {
-        "name": "Sam X Nguyen",
-        "email": "samxnguyen@gmail.com"
-    },
-    "files": [
-        "dist/plaintext.js"
-    ],
-    "main": "dist/plaintext.js",
-
-    "devDependencies": {
-        "grunt-typescript": "",
-        "grunt-contrib-concat": "^0.5.0",
-        "grunt-grep": "^0.7.0",
-        "grunt-shell": "^1.1.1",
-        "grunt-contrib-uglify": "^0.6.0",
-        "grunt-contrib-watch": "^0.6.1",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-newer": "^0.8.0",
-        "karma": "^0.12.28",
-        "karma-jasmine": "^0.3.2",
-        "karma-phantomjs-launcher": "^0.1.4",
-        "textile-js": "^0.1.9",
-        "typescript": "^1.3.0",
-        "uglify-js": "^2.4.15"
-    }
+  "name": "plaintext",
+  "version": "0.0.2",
+  "description": "Renderer for plaintext formats MultiMarkdown, Textile, TaskPaper",
+  "repository": "https://github.com/dtjm/plaintext.js",
+  "url": "https://github.com/dtjm/plaintext.js",
+  "keywords": [
+    "plaintext",
+    "plain",
+    "text",
+    "markdown",
+    "multimarkdown",
+    "textile",
+    "taskpaper"
+  ],
+  "author": {
+    "name": "Sam X Nguyen",
+    "email": "samxnguyen@gmail.com"
+  },
+  "files": [
+    "dist/plaintext.js"
+  ],
+  "scripts": {
+    "prepublish": "make clean all"
+  },
+  "main": "dist/plaintext.js",
+  "devDependencies": {
+    "grunt-typescript": "",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-grep": "^0.7.0",
+    "grunt-shell": "^1.1.1",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-newer": "^0.8.0",
+    "karma": "^0.12.28",
+    "karma-jasmine": "^0.3.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "textile-js": "^0.1.9",
+    "typescript": "^1.3.0",
+    "uglify-js": "^2.4.15",
+    "karma-requirejs": "^0.2.2"
+  }
 }
