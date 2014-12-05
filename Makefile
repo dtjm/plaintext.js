@@ -10,6 +10,10 @@ $(MMDDIR)/parser.o:
 	git submodule update --init --recursive
 	fig run build make -C $(MMDDIR)
 
+build/fountain.js:
+	mkdir -pv build
+	cp -v deps/Fountain.js/fountain.js $@
+
 build/libmultimarkdown.js: $(MMDDIR)/parser.o
 	git submodule update --init --recursive
 	mkdir -pv build
@@ -22,9 +26,9 @@ build/textile.js: node_modules/textile-js
 node_modules/textile-js:
 	npm install
 
-dist/plaintext.js: build/libmultimarkdown.js build/textile.js src/plaintext.js
+dist/plaintext.js: build/libmultimarkdown.js build/fountain.js build/textile.js src/plaintext.js
 	mkdir -pv dist
-	cat build/textile.js build/libmultimarkdown.js src/plaintext.js | \
+	cat build/fountain.js build/textile.js build/libmultimarkdown.js src/plaintext.js | \
 		grep -v process.platform.match > $@
 
 test: browsertest nodetest

@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Plaintext.js Example</title>
-	<script data-main="app" src="../tests/jasmine/lib/require.js" type="text/javascript" charset="utf-8" async defer></script>
+    <title>Plaintext.js Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <script data-main="app" src="../tests/jasmine/lib/require.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
+
 <body>
-	<textarea name="input" id="in"></textarea>
-	<iframe src="about:blank" id="out"></iframe>
+    <div id="sidebar">
+        <div id="fountain">FOUNTAIN</div>
+        <div id="multimarkdown">MULTIMARKDOWN</div>
+        <div>TEXTILE</div>
+        <div>TASKPAPER</div>
+    </div>
+    <textarea name="input" id="in">Type here</textarea>
+    <div id="iframe-container">
+        <iframe src="about:blank" id="out"></iframe>
+    </div>
+
 </html>

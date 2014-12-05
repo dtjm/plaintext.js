@@ -1,4 +1,30 @@
 (function() {
+    /************
+     * FOUNTAIN *
+     ************/
+    var Fountain = {};
+    Fountain.Renderer = function() {};
+
+    Fountain.Renderer.prototype.render = function(input, callback) {
+        var output = fountain.parse(input);
+        var html = "<div class='fountain-title'>" +
+            output.html.title_page + "</div><div class='fountain-script'>" +
+            output.html.script + "</div>";
+        callback(html);
+    }
+
+    Fountain.Renderer.prototype.metadata = function() {
+        return {
+            url: "https://github.com/mattdaly/Fountain.js",
+            id: "fountain/fountain.js/0.1.10",
+            name: "Fountain",
+            version: "0.1.10"
+        }
+    }
+
+    /*****************
+     * MULTIMARKDOWN *
+     *****************/
     // Create wrapped versions of the functions exported by libmultimarkdown
     var markdown_to_string = Module.cwrap('markdown_to_string', 'string', ['string', 'number', 'number']);
     var mmd_version = Module.cwrap('mmd_version', 'string', []);
@@ -216,6 +242,7 @@
     };
 
     PlainText.RendererType = {
+        "FOUNTAIN": "FOUNTAIN",
         "MULTIMARKDOWN": "MULTIMARKDOWN",
         "TASKPAPER": "TASKPAPER",
         "TEXTILE": "TEXTILE"
@@ -235,8 +262,12 @@
             case PlainText.RendererType.TEXTILE:
                 this._renderer = new Textile.Renderer(options);
                 break;
+            case PlainText.RendererType.FOUNTAIN:
+                this._renderer = new Fountain.Renderer();
+                break;
             default:
-                throw new Error('you must provide one of the following renderer types: ' + 'MULTIMARKDOWN, TASKPAPER, TEXTILE');
+                throw new Error('you must provide one of the following renderer types: ' +
+                    'FOUNTAIN, MULTIMARKDOWN, TASKPAPER, TEXTILE');
         }
     };
 

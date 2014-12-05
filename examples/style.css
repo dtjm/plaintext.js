@@ -1,0 +1,37 @@
+#sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#sidebar div {
+    padding: 10px 15px;
+    float: left;
+    height: 18px;
+}
+#sidebar div:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+textarea {
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: calc(50% - 40px);
+    bottom: 0px;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+}
+#iframe-container {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    bottom: 0px;
+    width: calc(50%);
+    border: 1px solid gray;
+}
+iframe {
+border: none;
+height: 100%;
+width: 100%;
+}

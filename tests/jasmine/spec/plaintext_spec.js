@@ -4,6 +4,25 @@ define(['../../../dist/plaintext'], function(plaintext) {
         it('should work with require.js', function() {
             expect(plaintext).toBeTruthy();
         });
+    });    
+
+    describe('Fountain.Renderer', function() {
+        var renderer = new plaintext.Renderer(plaintext.RendererType.FOUNTAIN, {});
+        it('should render Fountain', function() {
+            var cases = {
+                "Title: Test\n\n.SCENE HEADING": "<h1>Test</h1><h3>SCENE HEADING</h3>",
+            };
+            for (var input in cases) {
+                renderer.render(input, function(output) {
+                    expect(output).toEqual(cases[input]);
+                });
+            }
+        });
+        it('should return its metadata', function() {
+            var md = renderer.metadata();
+            console.log(md);
+            expect(md).toBeTruthy();
+        });
     });
 
     describe('MultiMarkdown.Renderer', function() {
