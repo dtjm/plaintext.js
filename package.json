@@ -1,6 +1,6 @@
 {
   "name": "plaintext",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Renderer for plaintext formats MultiMarkdown, Textile, TaskPaper",
   "repository": "https://github.com/dtjm/plaintext.js",
   "url": "https://github.com/dtjm/plaintext.js",
