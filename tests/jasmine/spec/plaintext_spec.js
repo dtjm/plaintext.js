@@ -1,4 +1,3 @@
-/// <reference path="../../../typings/tsd.d.ts" />
 define(['../../../dist/plaintext'], function(plaintext) {
 
     describe('plaintext', function() {
@@ -33,7 +32,7 @@ define(['../../../dist/plaintext'], function(plaintext) {
         var renderer = new plaintext.Renderer(plaintext.RendererType.TASKPAPER, {});
         it('should render TaskPaper', function() {
             var cases = {
-                "project 1:\n -task1\n -task2": '<ul class="tptop"><li class="tpproject">project 1</li>\n\n' + ' <li class="tpnote">-task1</li>\n\n' + ' <li class="tpnote">-task2</li>\n\n' + '</ul>'
+                "project 1:\n -task1\n -task2": '<ul class="taskpaper"><li class="taskpaper-project">project 1</li>\n\n' + ' <li class="taskpaper-note">-task1</li>\n\n' + ' <li class="taskpaper-note">-task2</li>\n\n' + '</ul>'
             };
             for (var input in cases) {
                 renderer.render(input, function(output) {
