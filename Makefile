@@ -39,4 +39,4 @@ autotest:  dist/plaintext.js
 	./node_modules/karma/bin/karma start karma.conf.js
 
 clean:
-	rm -rf build dist deps
+	rm -rf build dist deps node_modules
