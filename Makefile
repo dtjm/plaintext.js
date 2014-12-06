@@ -10,14 +10,11 @@ $(MMDDIR)/parser.o:
 	git submodule update --init --recursive
 	fig run build make -C $(MMDDIR)
 
-build/fountain.js:
-	mkdir -pv build
-	cp -v deps/Fountain.js/fountain.js $@
-
 build/libmultimarkdown.js: $(MMDDIR)/parser.o
 	git submodule update --init --recursive
 	mkdir -pv build
-	fig run build bash -c "emcc -O2 /src/$(MMDDIR)/*.c -o $@ -s EXPORTED_FUNCTIONS=\"['_mmd_version', '_markdown_to_string']\" -s OUTLINING_LIMIT=10000"
+	# Set total memory to 256MB because large markdown documents will run into the default 16MB limit
+	fig run build bash -c "emcc -O2 /src/$(MMDDIR)/*.c -o $@ -s EXPORTED_FUNCTIONS=\"['_mmd_version', '_markdown_to_string']\" -s OUTLINING_LIMIT=10000 -s TOTAL_MEMORY=268435456"
 
 build/textile.js: node_modules/textile-js
 	mkdir -pv build
@@ -26,9 +23,9 @@ build/textile.js: node_modules/textile-js
 node_modules/textile-js:
 	npm install
 
-dist/plaintext.js: build/libmultimarkdown.js build/fountain.js build/textile.js src/plaintext.js
+dist/plaintext.js: build/libmultimarkdown.js src/Fountain.js/fountain.js build/textile.js src/plaintext.js
 	mkdir -pv dist
-	cat build/fountain.js build/textile.js build/libmultimarkdown.js src/plaintext.js | \
+	cat src/Fountain.js/fountain.js build/textile.js build/libmultimarkdown.js src/plaintext.js | \
 		grep -v process.platform.match > $@
 
 test: browsertest nodetest
