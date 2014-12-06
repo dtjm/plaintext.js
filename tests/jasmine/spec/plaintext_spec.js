@@ -10,7 +10,7 @@ define(['../../../dist/plaintext'], function(plaintext) {
         var renderer = new plaintext.Renderer(plaintext.RendererType.FOUNTAIN, {});
         it('should render Fountain', function() {
             var cases = {
-                "Title: Test\n\n.SCENE HEADING": "<h1>Test</h1><h3>SCENE HEADING</h3>",
+                "Title: Test\n\n.SCENE HEADING": "<div class='fountain-title'><h1>Test</h1></div><div class='fountain-script'><h3>SCENE HEADING</h3></div>",
             };
             for (var input in cases) {
                 renderer.render(input, function(output) {
