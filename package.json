@@ -32,6 +32,7 @@
     "karma-requirejs": "^0.2.2",
     "karma-safari-launcher": "^0.1.1",
     "karma-sauce-launcher": "^0.2.10",
+    "karma-virtualbox-launcher": "0.0.2",
     "textile-js": "^0.1.9",
     "uglify-js": "^2.4.15"
   },

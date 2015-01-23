@@ -5,7 +5,7 @@ build:
         name: "install packages"
         code: |
           sudo apt-get update
-          sudo apt-get install python curl make
+          sudo apt-get install -y python curl make
 
     - script:
         name: "install nodejs"

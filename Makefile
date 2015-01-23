@@ -41,10 +41,10 @@ nodetest:
 	node ./tests/node/require_test.js
 
 browsertest: dist/plaintext.js
-	./node_modules/karma/bin/karma start karma.conf.js --single-run
+	./node_modules/karma/bin/karma start tests/karma/local.conf.js --single-run
 
 autotest:  dist/plaintext.js
-	./node_modules/karma/bin/karma start karma.conf.js
+	./node_modules/karma/bin/karma start tests/karma/local.conf.js
 
 saucetest:  dist/plaintext.js test-main.js chrometest ie9test
 	LAUNCHER=sl_safari ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
