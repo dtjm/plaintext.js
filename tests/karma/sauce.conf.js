@@ -36,28 +36,43 @@ module.exports = function(config) {
             version: '10'
         },
 
-        sl_ie_9: {
-            base: 'SauceLabs',
-            browserName: 'internet explorer',
-            version: '9'
+        // sl_ie_9: {
+        //     base: 'SauceLabs',
+        //     browserName: 'internet explorer',
+        //     version: '9'
+        // },
+
+        // sl_ie_8: {
+        //     base: 'SauceLabs',
+        //     browserName: 'internet explorer',
+        //     version: '8'
+        // },
+
+        vm_ie_8: {
+            base: 'VirtualBoxBrowser',
+            config: {
+                vm_name: 'IE8 - Win7', // configured name of your Virtualbox VM
+                use_gui: true // use VirtualBox GUI mode, by default runs headless
+            }
         },
 
-        sl_ie_8: {
-            base: 'SauceLabs',
-            browserName: 'internet explorer',
-            version: '8'
+        vm_ie_9: {
+            base: 'VirtualBoxBrowser',
+            config: {
+                vm_name: 'IE9 - Win7' // configured name of your Virtualbox VM
+            }
         }
     };
 
     var launcher = process.env.LAUNCHER;
     if (!customLaunchers.hasOwnProperty(launcher)) {
         console.error("Set env var 'LAUNCHER' to one of the following:");
-        for(k in customLaunchers) {
+        for (k in customLaunchers) {
             console.error("- " + k);
         }
 
         process.exit(1);
-    } 
+    }
 
     config.set({
 

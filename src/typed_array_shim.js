@@ -1028,3 +1028,6 @@
   }());
 
 }(this));
+
+// end typed_array_shim.js
+
