@@ -9,7 +9,10 @@ build:
 
     - script:
         name: "install docker"
-        code: curl -sSL https://get.docker.com/ubuntu/ | sudo sh
+        code: |
+          curl -sSL https://get.docker.com/ubuntu/ | sudo sh
+          sudo service docker restart
+          sudo docker run -i -t ubuntu /bin/bash -c hello docker
 
     - script:
         name: "install nodejs"
