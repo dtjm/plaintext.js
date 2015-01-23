@@ -5,7 +5,7 @@ build:
         name: "install packages"
         code: |
           sudo apt-get update
-          sudo apt-get install python curl build-essential
+          sudo apt-get install python curl make
 
     - script:
         name: "install docker"
