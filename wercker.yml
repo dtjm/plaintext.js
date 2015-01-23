@@ -6,6 +6,7 @@ build:
     - install-packages:
         packages: "nodejs npm python python-pip"
     - pip-install:
+        requirements_file: ""
         packages: "fig"
 
     # A custom script step, name value is used in the UI
