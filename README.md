@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/d03366a93d2acbbb0d58cb6f8255da80/m/master "wercker status")](https://app.wercker.com/project/bykey/d03366a93d2acbbb0d58cb6f8255da80)
+
 plaintext.js
 ============
 
