@@ -1,0 +1,4 @@
+/**
+ * plaintext.js
+*/
+;(function(){

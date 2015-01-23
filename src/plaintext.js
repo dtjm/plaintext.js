@@ -1,26 +1,4 @@
 (function() {
-    /************
-     * FOUNTAIN *
-     ************/
-    var Fountain = {};
-    Fountain.Renderer = function() {};
-
-    Fountain.Renderer.prototype.render = function(input, callback) {
-        var output = fountain.parse(input);
-        var html = "<div class='fountain-title'>" +
-            output.html.title_page + "</div><div class='fountain-script'>" +
-            output.html.script + "</div>";
-        callback(html);
-    }
-
-    Fountain.Renderer.prototype.metadata = function() {
-        return {
-            url: "https://github.com/mattdaly/Fountain.js",
-            id: "fountain/fountain.js/0.1.10",
-            name: "Fountain",
-            version: "0.1.10"
-        }
-    }
 
     /*****************
      * MULTIMARKDOWN *

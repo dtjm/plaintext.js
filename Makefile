@@ -23,12 +23,18 @@ build/textile.js: node_modules/textile-js
 node_modules/textile-js:
 	npm install
 
-dist/plaintext.js: build/libmultimarkdown.js src/Fountain.js/fountain.js build/textile.js src/plaintext.js
+dist/plaintext.js: src/*.js src/**/*.js build/*.js
 	mkdir -pv dist
-	cat src/Fountain.js/fountain.js build/textile.js build/libmultimarkdown.js src/plaintext.js | \
-		grep -v process.platform.match > $@
+	cat src/header.js \
+		src/typed_array_shim.js \
+		src/Fountain.js/fountain.js \
+		build/textile.js \
+		build/libmultimarkdown.js \
+		src/plaintext.js \
+		src/footer.js \
+		| grep -v process.platform.match > $@
 
-test: browsertest nodetest
+test: saucetest nodetest
 
 nodetest:
 	node ./tests/node/require_test.js
@@ -38,6 +44,15 @@ browsertest: dist/plaintext.js
 
 autotest:  dist/plaintext.js
 	./node_modules/karma/bin/karma start karma.conf.js
+
+saucetest:  dist/plaintext.js test-main.js
+	LAUNCHER=sl_chrome ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	LAUNCHER=sl_safari ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	LAUNCHER=sl_firefox ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	LAUNCHER=sl_ie_11 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	LAUNCHER=sl_ie_10 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	LAUNCHER=sl_ie_9 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	LAUNCHER=sl_ie_8 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 
 clean:
 	rm -rf build dist deps node_modules
