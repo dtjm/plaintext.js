@@ -46,18 +46,18 @@ browsertest: dist/plaintext.js
 autotest:  dist/plaintext.js
 	./node_modules/karma/bin/karma start tests/karma/local.conf.js
 
-saucetest:  dist/plaintext.js test-main.js chrometest ie9test
+saucetest:  dist/plaintext.js test-main.js chrometest
 	LAUNCHER=sl_safari ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 	LAUNCHER=sl_firefox ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 	LAUNCHER=sl_ie_11 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 	LAUNCHER=sl_ie_10 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
-	LAUNCHER=sl_ie_8 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	# LAUNCHER=sl_ie_8 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 
 chrometest:
 	LAUNCHER=sl_chrome ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 	
 ie9test:
-	LAUNCHER=sl_ie_9 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
+	# LAUNCHER=sl_ie_9 ./node_modules/karma/bin/karma start tests/karma/sauce.conf.js
 
 clean:
 	rm -rf build dist deps node_modules

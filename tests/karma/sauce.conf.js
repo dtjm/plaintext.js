@@ -36,17 +36,17 @@ module.exports = function(config) {
             version: '10'
         },
 
-        // sl_ie_9: {
-        //     base: 'SauceLabs',
-        //     browserName: 'internet explorer',
-        //     version: '9'
-        // },
+        sl_ie_9: {
+            base: 'SauceLabs',
+            browserName: 'internet explorer',
+            version: '9'
+        },
 
-        // sl_ie_8: {
-        //     base: 'SauceLabs',
-        //     browserName: 'internet explorer',
-        //     version: '8'
-        // },
+        sl_ie_8: {
+            base: 'SauceLabs',
+            browserName: 'internet explorer',
+            version: '8'
+        },
 
         vm_ie_8: {
             base: 'VirtualBoxBrowser',
