@@ -4,7 +4,7 @@ build:
     - install-packages:
         packages: "python"
 
-    - script: "install docker"
+    - script:
         name: "install docker"
         code: curl -sSL https://get.docker.com/ubuntu/ | sudo sh
 
