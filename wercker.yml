@@ -4,24 +4,25 @@ build:
   # The steps that will be executed on build
   steps:
     - install-packages:
-        packages: "nodejs npm python"
+        packages: "nodejs npm python python-pip"
     - pip-install:
         packages: "fig"
-    # A step that executes `npm install` command
-    - npm-install
-    # A step that executes `npm test` command
-    - npm-test
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
-    - script:
-        name: echo nodejs information
-        code: |
-          echo "node version $(node -v) running"
-          echo "npm version $(npm -v) running"
 
     - script:
-        name: check docker info
+        name: echo dependency versions
         code: |
+          echo "python version $(python --version) running"
+          echo "pip version $(pip --version) running"
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
           echo "docker version $(docker -v) running"
           echo "fig version $(fig --version) running"
+
+    # A step that executes `npm install` command
+    - npm-install
+    
+    # A step that executes `npm test` command
+    - npm-test
