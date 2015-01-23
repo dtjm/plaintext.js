@@ -5,11 +5,16 @@ build:
   steps:
     - install-packages:
         packages: "node npm python"
+
+    - mktemp:
+        envvar: TMPDIR
+        directory: true
+
     - script:
         name: "install fig"
         code: |
-          sudo curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > /usr/local/bin/fig
-          sudo chmod +x /usr/local/bin/fig
+          curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > $TMPDIR/fig
+          sudo install -v -m 755 $TMDIR/fig /usr/local/bin/fig
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
