@@ -1,19 +1,11 @@
-box: tvaughan/ubuntu14.04@1.1.0
+box: wercker-labs/docker
 build:
   steps:
     - script:
         name: "install packages"
         code: |
           sudo apt-get update
-          sudo apt-get install python curl make cgroup-lite
-
-    - script:
-        name: "install docker"
-        code: |
-          curl -sSL https://get.docker.com/ubuntu/ | sudo sh
-          sudo service cgroup-lite restart
-          sudo service docker restart
-          sudo docker run -i -t ubuntu /bin/bash -c hello docker
+          sudo apt-get install python curl make
 
     - script:
         name: "install nodejs"
