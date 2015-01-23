@@ -1,14 +1,12 @@
-box: wercker-labs/docker
-# Build definition
+box: tvaughan/ubuntu14.04@1.1.0
 build:
-  # The steps that will be executed on build
   steps:
     - install-packages:
         packages: "python"
 
-    - mktemp:
-        envvar: TMPDIR
-        directory: true
+    - script: "install docker"
+        name: "install docker"
+        code: curl -sSL https://get.docker.com/ubuntu/ | sudo sh
 
     - script:
         name: "install nodejs"
@@ -19,23 +17,29 @@ build:
     - script:
         name: "install fig"
         code: |
-          curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > $TMPDIR/fig
-          sudo install -v -m 755 $TMPDIR/fig /usr/local/bin/fig
+          if [ -f $WERCKER_CACHE_DIR/fig ]; then
+            debug "found fig in cache"
+          else
+            debug "fig not in cache, downloading"
+            curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > $WERCKER_CACHE_DIR/fig
+          fi
+          sudo install -v -m 755 $WERCKER_CACHE_DIR/fig /usr/local/bin/fig
 
     - script:
         name: echo dependency versions
         code: |
-          echo "python version $(python --version) running"
-          echo "pip version $(pip --version) running"
-          echo "node version $(node -v) running"
-          echo "npm version $(npm -v) running"
-          echo "docker version $(docker -v) running"
-          echo "fig version $(fig --version) running"
+          python --version
+          node -v
+          npm -v
+          docker -v
+          fig --version
 
-    # A step that executes `npm install` command
     - npm-install
 
-    # A step that executes `npm test` command
+    - script:
+        name: make
+        code: make
+
     - npm-test
 
     - script:
