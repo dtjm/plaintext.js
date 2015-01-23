@@ -1,6 +1,10 @@
 box: tvaughan/ubuntu14.04@1.1.0
 build:
   steps:
+    - script:
+        name: "apt-get update"
+        code: sudo apt-get update
+
     - install-packages:
         packages: "python curl"
 
