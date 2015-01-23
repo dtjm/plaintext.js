@@ -2,11 +2,10 @@ box: tvaughan/ubuntu14.04@1.1.0
 build:
   steps:
     - script:
-        name: "apt-get update"
-        code: sudo apt-get update
-
-    - install-packages:
-        packages: "python curl"
+        name: "install packages"
+        code: |
+          sudo apt-get update
+          sudo apt-get install python curl
 
     - script:
         name: "install docker"
@@ -20,14 +19,14 @@ build:
 
     - script:
         name: "install fig"
-        code: |
+        code: >
           if [ -f $WERCKER_CACHE_DIR/fig ]; then
-            debug "found fig in cache"
+          debug "found fig in cache";
           else
-            debug "fig not in cache, downloading"
-            curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > $WERCKER_CACHE_DIR/fig
-          fi
-          sudo install -v -m 755 $WERCKER_CACHE_DIR/fig /usr/local/bin/fig
+          debug "fig not in cache, downloading";
+          curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > $WERCKER_CACHE_DIR/fig;
+          fi;
+          sudo install -v -m 755 $WERCKER_CACHE_DIR/fig /usr/local/bin/fig;
 
     - script:
         name: echo dependency versions
