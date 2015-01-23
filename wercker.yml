@@ -11,6 +11,7 @@ build:
         name: "install docker"
         code: |
           curl -sSL https://get.docker.com/ubuntu/ | sudo sh
+          sudo service cgroup-lite restart
           sudo service docker restart
           sudo docker run -i -t ubuntu /bin/bash -c hello docker
 
