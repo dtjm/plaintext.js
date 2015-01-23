@@ -7,7 +7,9 @@ build:
         packages: "node npm python"
     - script:
         name: "install fig"
-        code: curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > /usr/local/bin/fig; chmod +x /usr/local/bin/fig
+        code: |
+          sudo curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > /usr/local/bin/fig
+          sudo chmod +x /usr/local/bin/fig
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
