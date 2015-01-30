@@ -41,6 +41,9 @@ build:
 
     - npm-test
 
+    - heroku-deploy:
+        key-name: HEROKU_KEY
+
     - script:
         name: run sauce tests
         code: make saucetest
