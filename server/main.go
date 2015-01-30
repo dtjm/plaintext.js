@@ -15,6 +15,7 @@ func parseConfig() *config {
 	c := config{}
 
 	flag.StringVar(&c.port, "port", "4000", "HTTP port")
+	flag.Parse()
 
 	return &c
 }
