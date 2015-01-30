@@ -1,11 +1,27 @@
 package main
 
 import (
+	"flag"
 	"log"
+	"net"
 	"net/http"
-	"os"
 )
 
+type config struct {
+	port string
+}
+
+func parseConfig() *config {
+	c := config{}
+
+	flag.StringVar(&c.port, "port", "4000", "HTTP port")
+
+	return &c
+}
+
 func main() {
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
+	c := parseConfig()
+
+	log.Printf("config: %+v", c)
+	log.Fatal(http.ListenAndServe(net.JoinHostPort("", c.port), nil))
 }
